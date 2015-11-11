@@ -21,7 +21,6 @@ class PopAnimator: NSObject, UIViewControllerAnimatedTransitioning {
         let containerView = transitionContext.containerView()!
         let toView = transitionContext.viewForKey(UITransitionContextToViewKey)!
         let herbView = presenting ? toView : transitionContext.viewForKey(UITransitionContextFromViewKey)!
-
         let initialFrame = presenting ? originFrame : herbView.frame
         let finalFrame = presenting ? herbView.frame : originFrame
         let xScaleFactor = presenting ? initialFrame.width / finalFrame.width : finalFrame.width / initialFrame.width
@@ -31,8 +30,7 @@ class PopAnimator: NSObject, UIViewControllerAnimatedTransitioning {
         if presenting {
             herbView.transform = scaleTransform
             herbView.center = CGPoint(x: CGRectGetMidX(initialFrame), y: CGRectGetMidY(initialFrame))
-            herbView.clipsToBounds =  true
-
+            herbView.clipsToBounds = true
         }
 
         containerView.addSubview(toView)
