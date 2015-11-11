@@ -39,12 +39,12 @@ class PopAnimator: NSObject, UIViewControllerAnimatedTransitioning {
             delay:0.0,
             usingSpringWithDamping: 0.4,
             initialSpringVelocity: 0.0,
-            options: [],
+            options:[.CurveEaseInOut, .TransitionCrossDissolve, .TransitionFlipFromTop],
             animations: {
                 herbView.transform = self.presenting ? CGAffineTransformIdentity : scaleTransform
                 herbView.center = CGPoint(x: CGRectGetMidX(finalFrame), y: CGRectGetMidY(finalFrame))
 
-            }, completion:{_ in
+            }, completion:{ finished in
                 transitionContext.completeTransition(true)
         })
 
